@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GasotecFactureCreator", "GasotecFactureCreator\GasotecFactureCreator.csproj", "{65F24692-2CC3-4C32-90C4-5346100A27FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65F24692-2CC3-4C32-90C4-5346100A27FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65F24692-2CC3-4C32-90C4-5346100A27FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65F24692-2CC3-4C32-90C4-5346100A27FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65F24692-2CC3-4C32-90C4-5346100A27FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
