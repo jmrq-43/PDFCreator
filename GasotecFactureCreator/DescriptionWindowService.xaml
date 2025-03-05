@@ -64,7 +64,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Menu Grid.Column="0" Margin="0,50,0,0">
-                        <MenuItem x:Name="MenuItemServicio" Header="Servicio">
+                        <MenuItem FontSize="20" x:Name="MenuItemServicio" Header="Servicio">
                             <MenuItem Header="Mantenimiento" Click="MenuItemSubmenu_Click" />
                             <MenuItem Header="Reparacion" Click="MenuItemSubmenu_Click" />
                             <MenuItem Header="Instalacion" Click="MenuItemSubmenu_Click" />
