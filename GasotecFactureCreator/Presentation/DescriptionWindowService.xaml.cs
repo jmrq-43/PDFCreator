@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace GasotecFactureCreator;
+namespace GasotecFactureCreator.Presentation;
 
 public partial class DescriptionWindowService : Window
 {

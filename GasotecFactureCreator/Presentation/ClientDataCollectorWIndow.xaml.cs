@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace GasotecFactureCreator;
+namespace GasotecFactureCreator.Presentation;
 
 public partial class ClientDataCollectorWIndow : Window
 {
