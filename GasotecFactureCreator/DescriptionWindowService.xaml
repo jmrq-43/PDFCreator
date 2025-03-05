@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GasotecFactureCreator"
         mc:Ignorable="d"
         Title="DescriptionWindowService" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#D9D9D9">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
