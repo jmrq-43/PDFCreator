@@ -52,21 +52,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock
-                        FontSize="20"
-                        HorizontalAlignment="Center"
-                        Grid.Column="0"
-                        Text="Tipo de servicio" />
-                    <TextBlock
-                        FontSize="20"
-                        HorizontalAlignment="Center"
-                        Text="Descripcion"
-                        Grid.Column="1" />
-                    <TextBlock
-                        FontSize="20"
-                        Grid.Column="2"
-                        HorizontalAlignment="Center"
-                        Text="Valor" />
+
 
                     <Menu Grid.Column="0" Margin="0,50,0,0">
                         <MenuItem x:Name="MenuItemServicio" Header="Servicio">
