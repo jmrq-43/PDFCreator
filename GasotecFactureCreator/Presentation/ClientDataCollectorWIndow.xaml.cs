@@ -15,4 +15,11 @@ public partial class ClientDataCollectorWIndow : Window
         this.Close();
         mainWindow.Show();
     }
+
+    private void Sig_Button_Click(Object sender, RoutedEventArgs e)
+    {
+        DescriptionWindowService service = new DescriptionWindowService();
+        this.Close();
+        service.Show();
+    }
 }
