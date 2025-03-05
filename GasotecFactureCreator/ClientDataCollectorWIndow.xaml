@@ -121,5 +121,16 @@
                 Style="{StaticResource RoundedButtonStyle}">
             </Button>
         </Grid>
+        <Grid Grid.Row="2">
+            <Button
+                HorizontalAlignment="Right"
+                Width="140"
+                Height="50"
+                Background=" #0F0788"
+                Click="Sig_Button_Click"
+                Content="Siguinte"
+                Style="{StaticResource RoundedButtonStyle}">
+            </Button>
+        </Grid>
     </Grid>
 </Window>
