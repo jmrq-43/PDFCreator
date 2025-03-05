@@ -7,6 +7,78 @@
         mc:Ignorable="d"
         Title="DescriptionWindowService" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Background=" #0F0788">
+            <TextBlock
+                FontSize="50"
+                Foreground=" #ffff"
+                TextAlignment="Center"
+                Margin="10">
+                Descripcion del servicio
+            </TextBlock>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel x:Name="MainStackPanel">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        FontSize="20"
+                        HorizontalAlignment="Center"
+                        Grid.Column="0"
+                        Text="Tipo de servicio" />
+                    <TextBlock
+                        FontSize="20"
+                        HorizontalAlignment="Center"
+                        Text="Descripcion"
+                        Grid.Column="1" />
+                    <TextBlock
+                        FontSize="20"
+                        Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        Text="Valor" />
+
+                    <Menu Grid.Column="0" Margin="0,50,0,0">
+                        <MenuItem x:Name="MenuItemServicio" Header="Servicio">
+                            <MenuItem Header="Mantenimiento" Click="MenuItemSubmenu_Click" />
+                            <MenuItem Header="Reparacion" Click="MenuItemSubmenu_Click" />
+                            <MenuItem Header="Instalacion" Click="MenuItemSubmenu_Click" />
+                            <MenuItem Header="Venta repuesto" Click="MenuItemSubmenu_Click" />
+                            <MenuItem Header="Venta Equipo" Click="MenuItemSubmenu_Click" />
+                        </MenuItem>
+                    </Menu>
+                    <TextBox
+                        x:Name="TextBoxDescription"
+                        Grid.Column="1"
+                        Margin="0,50,0,0" />
+                    <TextBox
+                        x:Name="TextBoxValue"
+                        Grid.Column="2"
+                        Margin="0,50,0,0" />
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button
+            VerticalAlignment="Top"
+            Grid.Row="2"
+            Content="mas"
+            Width="200"
+            Height="50"
+            Style="{StaticResource RoundedButtonStyle}"
+            Click="AddRow_Click" />
     </Grid>
 </Window>
