@@ -81,13 +81,22 @@
                 Content="volver"
                 Style="{StaticResource RoundedButtonStyle}"/>
 
-        <Button
-            VerticalAlignment="Top"
-            Grid.Row="2"
-            Content="mas"
-            Width="200"
-            Height="50"
-            Style="{StaticResource RoundedButtonStyle}"
-            Click="AddRow_Click" />
+            <Button
+                Margin="20,0,0,20"
+                HorizontalAlignment="Center"
+                Content="Agregar servicio "
+                Width="240"
+                Height="50"
+                Style="{StaticResource RoundedButtonStyle}"
+                Click="AddRow_Click" />
+
+            <Button
+                Margin="0,0,20,20"
+                HorizontalAlignment="Right"
+                Width="140"
+                Height="50"
+                Content="Finalizar"
+                Style="{StaticResource RoundedButtonStyle}"/>
+        </Grid>
     </Grid>
 </Window>
