@@ -28,7 +28,7 @@
         </Grid>
 
         <ScrollViewer Grid.Row="1">
-            <StackPanel>
+            <StackPanel HorizontalAlignment="Center">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -40,7 +40,9 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="300,20,0,0">
+                    <Grid
+                        Grid.Row="0"
+                        Margin="0,40,0,0">
                         <TextBlock
                             FontSize="28"
                             Text="Nombre" />
@@ -52,7 +54,9 @@
                             Style="{StaticResource RoundedTextBoxStyle}">
                         </TextBox>
                     </Grid>
-                    <Grid Grid.Row="1" Margin="300,20,0,0">
+                    <Grid
+                        Grid.Row="1"
+                        Margin="0,40,0,0">
                         <TextBlock
                             FontSize="28"
                             Text="Direccion" />
@@ -61,9 +65,11 @@
                             Height="30"
                             Width="130"
                             Margin="00,40,0,0"
-                            Style="{StaticResource RoundedTextBoxStyle}"/>
+                            Style="{StaticResource RoundedTextBoxStyle}" />
                     </Grid>
-                    <Grid Grid.Row="2" Margin="300,20,0,0">
+                    <Grid
+                        Grid.Row="2"
+                        Margin="0,40,0,0">
                         <TextBlock
                             FontSize="28"
                             Text="Telefono" />
@@ -72,9 +78,11 @@
                             Height="30"
                             Width="130"
                             Margin="00,40,0,0"
-                            Style="{StaticResource RoundedTextBoxStyle}"/>
+                            Style="{StaticResource RoundedTextBoxStyle}" />
                     </Grid>
-                    <Grid Grid.Row="3" Margin="300,20,0,0">
+                    <Grid
+                        Grid.Row="3"
+                        Margin="0,40,0,0">
                         <TextBlock
                             FontSize="28"
                             Text="Correo" />
@@ -83,9 +91,11 @@
                             Height="30"
                             Width="130"
                             Margin="00,40,0,0"
-                            Style="{StaticResource RoundedTextBoxStyle}"/>
+                            Style="{StaticResource RoundedTextBoxStyle}" />
                     </Grid>
-                    <Grid Grid.Row="4" Margin="300,20,0,0">
+                    <Grid
+                        Grid.Row="4"
+                        Margin="0,40,0,0">
                         <TextBlock
                             FontSize="28"
                             Text="NIT" />
@@ -94,14 +104,15 @@
                             Height="30"
                             Width="130"
                             Margin="00,40,0,0"
-                            Style="{StaticResource RoundedTextBoxStyle}"/>
+                            Style="{StaticResource RoundedTextBoxStyle}" />
                     </Grid>
                 </Grid>
             </StackPanel>
         </ScrollViewer>
 
-        <Grid Grid.Row="2" Margin="0,100,0,0">
+        <Grid Grid.Row="2">
             <Button
+                HorizontalAlignment="Left"
                 Width="140"
                 Height="50"
                 Background=" #0F0788"
