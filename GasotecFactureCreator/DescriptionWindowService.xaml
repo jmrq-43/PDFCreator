@@ -72,6 +72,15 @@
             </StackPanel>
         </ScrollViewer>
 
+        <Grid Grid.Row="3">
+            <Button
+                Margin="20,0,0,20"
+                HorizontalAlignment="Left"
+                Height="50"
+                Width="140"
+                Content="volver"
+                Style="{StaticResource RoundedButtonStyle}"/>
+
         <Button
             VerticalAlignment="Top"
             Grid.Row="2"
