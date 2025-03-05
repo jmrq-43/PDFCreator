@@ -23,6 +23,8 @@ public partial class MainWindow : Window
 
     private void Button_Go_Data_Collector(object sender, RoutedEventArgs e)
     {
-        MainFrame.Navigate(new ClientDataCollectorWIndow());
+        ClientDataCollectorWIndow wind = new ClientDataCollectorWIndow();
+        this.Close();
+        wind.Show();
     }
 }

@@ -26,30 +26,17 @@
                 Generador de facturas gasotec
             </TextBlock>
         </Grid>
-
-        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="2">
+            <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        </StackPanel>
 
         <Grid Grid.Row="1" Margin="0,100,0,0">
-            <Button Width="140" Height="50" Background=" #0F0788" Click="Button_Go_Data_Collector">
-                <TextBlock Foreground="#ffff" FontSize="30" Text="Empezar" />
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border
-                            x:Name="buttonBorder"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="30">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="buttonBorder" Property="Background" Value="#7F79D4"></Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <Button
+                Width="140"
+                Height="50"
+                Style="{StaticResource RoundedButtonStyle}"
+                Click="Button_Go_Data_Collector"
+                Content="Empezar"/>
         </Grid>
     </Grid>
 </Window>
