@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:GasotecFactureCreator"
         mc:Ignorable="d"
-        Title="DescriptionWindowService" Height="450" Width="800">
+        Title="DescriptionWindowService" Height="750" Width="800">
     <Grid Background="#D9D9D9">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
