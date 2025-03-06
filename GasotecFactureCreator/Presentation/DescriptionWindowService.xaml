@@ -70,6 +70,73 @@
 
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0"
+                  Margin="20,0,0,30">
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontSize="28"
+                    Text="Recivido por: " />
+            </Grid>
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                FontSize="28"
+                HorizontalAlignment="Center"
+                Text="Abono  " />
+
+            <TextBox
+                x:Name="TextBoxAbono"
+                Margin="20,0,20,0"
+                Grid.Column="0"
+                Grid.Row="2"
+                Height="30"
+                Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                FontSize="28"
+                HorizontalAlignment="Center"
+                Text="Saldo" />
+
+            <TextBox
+                x:Name="TextBoxSaldo"
+                Margin="20,0,20,0"
+                Grid.Column="1"
+                Grid.Row="2"
+                Height="30"
+                Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="2"
+                FontSize="28"
+                HorizontalAlignment="Center"
+                Text="Total" />
+
+            <TextBox
+                x:Name="TextBoxTotal"
+                Margin="20,0,20,0"
+                Grid.Column="2"
+                Grid.Row="2"
+                Height="30"
+                Style="{StaticResource RoundedTextBoxStyle}"/>
+
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
