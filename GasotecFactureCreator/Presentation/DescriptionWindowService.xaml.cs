@@ -40,9 +40,4 @@ public partial class DescriptionWindowService : Window
         AddRow();
     }
 
-    private void MenuItemSubmenu_Click(object sender, RoutedEventArgs e, MenuItem menuItemServicio)
-    {
-        MenuItem menuItem = (MenuItem)sender;
-        menuItemServicio.Header = menuItem.Header;
-    }
 }
