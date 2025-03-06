@@ -11,12 +11,7 @@ public partial class DescriptionWindowService : Window
     public DescriptionWindowService()
     {
         InitializeComponent();
-    }
-
-    private void MenuItemSubmenu_Click(object sender, RoutedEventArgs e)
-    {
-        MenuItem menuItem = (MenuItem)sender;
-        MenuItemServicio.Header = menuItem.Header;
+        AddRow();
     }
 
     private void AddRow()
