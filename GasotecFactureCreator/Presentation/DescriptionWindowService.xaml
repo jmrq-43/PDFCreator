@@ -5,12 +5,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:GasotecFactureCreator"
         mc:Ignorable="d"
-        Title="DescriptionWindowService" Height="650" Width="800">
+        Title="Descripcion del servicio" Height="650" Width="1100">
     <Grid Background="#D9D9D9">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -27,11 +28,11 @@
         </Grid>
 
         <Grid Grid.Row="1">
-           <Grid.ColumnDefinitions>
-               <ColumnDefinition Width="*"/>
-               <ColumnDefinition Width="*"/>
-               <ColumnDefinition Width="*"/>
-           </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
             <TextBlock
                 Grid.Column="0"
@@ -44,7 +45,7 @@
                 FontSize="28"
                 Margin="0,20,0,0"
                 HorizontalAlignment="Center"
-                Text="Descripcion"/>
+                Text="Descripcion" />
             <TextBlock
                 Grid.Column="2"
                 FontSize="28"
@@ -70,9 +71,77 @@
 
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0"
+                  Margin="20,0,0,30">
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontSize="28"
+                    Text="Recivido por: " />
+            </Grid>
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                FontSize="28"
+                HorizontalAlignment="Center"
+                Text="Abono  " />
+
+            <TextBox
+                x:Name="TextBoxAbono"
+                Margin="20,0,20,0"
+                Grid.Column="0"
+                Grid.Row="2"
+                Height="30"
+                Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                FontSize="28"
+                HorizontalAlignment="Center"
+                Text="Saldo" />
+
+            <TextBox
+                x:Name="TextBoxSaldo"
+                Margin="20,0,20,0"
+                Grid.Column="1"
+                Grid.Row="2"
+                Height="30"
+                Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="2"
+                FontSize="28"
+                HorizontalAlignment="Center"
+                Text="Total" />
+
+            <TextBox
+                x:Name="TextBoxTotal"
+                Margin="20,0,20,0"
+                Grid.Column="2"
+                Grid.Row="2"
+                Height="30"
+                Style="{StaticResource RoundedTextBoxStyle}"/>
+
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Button
                 Grid.Column="0"
@@ -81,26 +150,36 @@
                 Height="50"
                 Width="140"
                 Content="volver"
-                Style="{StaticResource RoundedButtonStyle}"/>
+                Style="{StaticResource RoundedButtonStyle}" />
 
             <Button
                 Grid.Column="1"
-                Margin="20,20,0,10"
+                Margin="0,20,0,10"
                 HorizontalAlignment="Center"
                 Content="Agregar servicio "
-                Width="240"
+                Width="260"
                 Height="50"
                 Style="{StaticResource RoundedButtonStyle}"
                 Click="AddRow_Click" />
 
             <Button
                 Grid.Column="2"
+                Margin="0,20,0,10"
+                HorizontalAlignment="Center"
+                Content="Eliminar Servicio  "
+                Width="260"
+                Height="50"
+                Style="{StaticResource RoundedButtonStyle}"
+                Click="DeleteRow_CLick" />
+
+            <Button
+                Grid.Column="3"
                 Margin="0,20,20,10"
                 HorizontalAlignment="Right"
                 Width="140"
                 Height="50"
                 Content="Finalizar"
-                Style="{StaticResource RoundedButtonStyle}"/>
+                Style="{StaticResource RoundedButtonStyle}" />
         </Grid>
     </Grid>
 </Window>
