@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using GasotecFactureCreator.Controller;
 using GasotecFactureCreator.Controller.Service;
+using GasotecFactureCreator.Domain;
 
 namespace GasotecFactureCreator.Presentation;
 
@@ -12,6 +14,7 @@ public partial class DescriptionWindowService : Window
     {
         InitializeComponent();
         AddRow();
+        LoadSalesChecker();
     }
 
     private void AddRow()
@@ -48,5 +51,12 @@ public partial class DescriptionWindowService : Window
 
             MainStackPanel.Children.RemoveAt(MainStackPanel.Children.Count - 1);
         }
+    }
+
+    private void LoadSalesChecker()
+    {
+        SalesChecker salesChecker = SalesCheckerController.GetCurrentSalesChecker();
+
+        TextBlockRecivido.Text = $"Recivido por:   {salesChecker.Name} ";
     }
 }
