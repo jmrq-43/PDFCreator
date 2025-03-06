@@ -84,6 +84,7 @@
             <Grid Grid.Row="0" Grid.Column="0"
                   Margin="20,0,0,30">
                 <TextBlock
+                    x:Name="TextBlockRecivido"
                     Grid.Row="0"
                     Grid.Column="0"
                     FontSize="28"
