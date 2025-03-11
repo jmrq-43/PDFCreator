@@ -21,7 +21,7 @@ public partial class ClientDataCollectorWIndow : Window
     {
         string name = TextBoxName.Text;
         string address = TextBoxAddres.Text;
-        int phone = int.Parse(TextBoxPhone.Text);
+        long phone = long.Parse(TextBoxPhone.Text);
         string mail = TextBoxMail.Text;
         string nit = TextBoxNit.Text;
 
