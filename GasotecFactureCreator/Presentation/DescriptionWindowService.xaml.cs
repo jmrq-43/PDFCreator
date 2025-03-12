@@ -80,9 +80,17 @@ public partial class DescriptionWindowService : Window
     {
         SalesChecker salesChecker = SalesCheckerController.GetCurrentSalesChecker();
 
-        TextBlockRecivido.Text = $"Recivido por:   {salesChecker.Name} ";
+    private void UpdateBalance()
+    {
+        if (decimal.TryParse(TextBoxTotal.Text, out decimal total) && decimal.TryParse(TextBoxAbono.Text, out decimal abono))
+        {
+            TextBoxSaldo.Text = (total - abono).ToString();
+        }
+        else if (decimal.TryParse(TextBoxTotal.Text, out total))
+        {
+            TextBoxSaldo.Text = total.ToString();
+        }
     }
-}
 
     private void TextBoxValue_TextChanged(object sender, TextChangedEventArgs e)
     {
