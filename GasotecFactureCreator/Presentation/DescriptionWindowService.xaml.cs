@@ -72,6 +72,7 @@ public partial class DescriptionWindowService : Window
             _services.RemoveAt(_services.Count - 1);
 
             MainStackPanel.Children.RemoveAt(MainStackPanel.Children.Count - 1);
+            UpdateTotal();
         }
     }
 
