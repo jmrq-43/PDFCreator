@@ -34,6 +34,7 @@ public partial class DescriptionWindowService : Window
         gridRow.Children.Add(servicioRows.MenuServicio);
         gridRow.Children.Add(servicioRows.TextBoxDescription);
         gridRow.Children.Add(servicioRows.TextBoxValue);
+        servicioRows.TextBoxValue.TextChanged += TextBoxValue_TextChanged;
 
         MainStackPanel.Children.Add(gridRow);
         UpdateTotal();
