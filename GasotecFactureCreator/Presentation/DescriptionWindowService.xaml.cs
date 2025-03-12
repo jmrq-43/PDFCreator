@@ -15,6 +15,8 @@ public partial class DescriptionWindowService : Window
         InitializeComponent();
         AddRow();
         LoadSalesChecker();
+        TextBoxTotal.IsReadOnly = true;
+        TextBoxSaldo.IsReadOnly = true;
     }
 
     private void AddRow()
@@ -34,8 +36,31 @@ public partial class DescriptionWindowService : Window
         gridRow.Children.Add(servicioRows.MenuServicio);
         gridRow.Children.Add(servicioRows.TextBoxDescription);
         gridRow.Children.Add(servicioRows.TextBoxValue);
+        servicioRows.TextBoxValue.TextChanged += TextBoxValue_TextChanged;
 
         MainStackPanel.Children.Add(gridRow);
+        UpdateTotal();
+    }
+
+    private void SaveService(object sender, RoutedEventArgs e)
+    {
+        List<Service> services = new List<Service>();
+
+        foreach (var rowService in _services)
+        {
+            Service servicio = new Service
+            {
+                serviceType = rowService.MenuServicio.Items[0].ToString(),
+                serviceDescription = rowService.TextBoxDescription.Text,
+                servicePrice = decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice)
+                    ? servicePrice
+                    : 0,
+            };
+
+            services.Add(servicio);
+        }
+
+        MessageBox.Show("Se ha creado un nuevo PDF");
     }
 
     private void AddRow_Click(object sender, RoutedEventArgs e)
@@ -43,20 +68,55 @@ public partial class DescriptionWindowService : Window
         AddRow();
     }
 
-    private void DeleteRow_CLick(Object sender, RoutedEventArgs e)
+    private void DeleteRow_CLick(object sender, RoutedEventArgs e)
     {
         if (_services.Count > 1)
         {
             _services.RemoveAt(_services.Count - 1);
-
             MainStackPanel.Children.RemoveAt(MainStackPanel.Children.Count - 1);
+            UpdateTotal();
         }
     }
 
     private void LoadSalesChecker()
     {
         SalesChecker salesChecker = SalesCheckerController.GetCurrentSalesChecker();
+        TextBlockRecivido.Text = $"Recibido por: {salesChecker.Name} ";
+    }
 
-        TextBlockRecivido.Text = $"Recivido por:   {salesChecker.Name} ";
+    private void UpdateTotal()
+    {
+        decimal total = 0;
+        foreach (var rowService in _services)
+        {
+            if (decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice))
+            {
+                total += servicePrice;
+            }
+        }
+        TextBoxTotal.Text = total.ToString();
+        UpdateBalance();
+    }
+
+    private void UpdateBalance()
+    {
+        if (decimal.TryParse(TextBoxTotal.Text, out decimal total) && decimal.TryParse(TextBoxAbono.Text, out decimal abono))
+        {
+            TextBoxSaldo.Text = (total - abono).ToString();
+        }
+        else if (decimal.TryParse(TextBoxTotal.Text, out total))
+        {
+            TextBoxSaldo.Text = total.ToString();
+        }
+    }
+
+    private void TextBoxValue_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateTotal();
+    }
+
+    private void TextBoxAbono_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateBalance();
     }
 }
