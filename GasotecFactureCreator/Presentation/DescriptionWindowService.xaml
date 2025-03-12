@@ -180,6 +180,7 @@
                 Width="140"
                 Height="50"
                 Content="Finalizar"
+                Click="SaveService"
                 Style="{StaticResource RoundedButtonStyle}" />
         </Grid>
     </Grid>
