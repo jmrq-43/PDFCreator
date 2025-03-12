@@ -83,3 +83,14 @@ public partial class DescriptionWindowService : Window
         TextBlockRecivido.Text = $"Recivido por:   {salesChecker.Name} ";
     }
 }
+
+    private void TextBoxValue_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateTotal();
+    }
+
+    private void TextBoxAbono_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateBalance();
+    }
+}
