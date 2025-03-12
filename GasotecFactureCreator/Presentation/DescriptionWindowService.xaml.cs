@@ -79,6 +79,22 @@ public partial class DescriptionWindowService : Window
     private void LoadSalesChecker()
     {
         SalesChecker salesChecker = SalesCheckerController.GetCurrentSalesChecker();
+        TextBlockRecivido.Text = $"Recibido por: {salesChecker.Name} ";
+    }
+
+    private void UpdateTotal()
+    {
+        decimal total = 0;
+        foreach (var rowService in _services)
+        {
+            if (decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice))
+            {
+                total += servicePrice;
+            }
+        }
+        TextBoxTotal.Text = total.ToString();
+        UpdateBalance();
+    }
 
     private void UpdateBalance()
     {
