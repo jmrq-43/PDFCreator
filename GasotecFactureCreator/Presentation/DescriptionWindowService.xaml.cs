@@ -36,6 +36,28 @@ public partial class DescriptionWindowService : Window
         gridRow.Children.Add(servicioRows.TextBoxValue);
 
         MainStackPanel.Children.Add(gridRow);
+        UpdateTotal();
+    }
+
+    private void SaveService(object sender, RoutedEventArgs e)
+    {
+        List<Service> services = new List<Service>();
+
+        foreach (var rowService in _services)
+        {
+            Service servicio = new Service
+            {
+                serviceType = rowService.MenuServicio.Items[0].ToString(),
+                serviceDescription = rowService.TextBoxDescription.Text,
+                servicePrice = decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice)
+                    ? servicePrice
+                    : 0,
+            };
+
+            services.Add(servicio);
+        }
+
+        MessageBox.Show("Se ha creado un nuevo PDF");
     }
 
     private void AddRow_Click(object sender, RoutedEventArgs e)
