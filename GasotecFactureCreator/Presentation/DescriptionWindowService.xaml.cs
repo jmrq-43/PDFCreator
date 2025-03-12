@@ -68,12 +68,11 @@ public partial class DescriptionWindowService : Window
         AddRow();
     }
 
-    private void DeleteRow_CLick(Object sender, RoutedEventArgs e)
+    private void DeleteRow_CLick(object sender, RoutedEventArgs e)
     {
         if (_services.Count > 1)
         {
             _services.RemoveAt(_services.Count - 1);
-
             MainStackPanel.Children.RemoveAt(MainStackPanel.Children.Count - 1);
             UpdateTotal();
         }

@@ -104,6 +104,7 @@
                 Grid.Column="0"
                 Grid.Row="2"
                 Height="30"
+                TextChanged="TextBoxAbono_TextChanged"
                 Style="{StaticResource RoundedTextBoxStyle}"/>
 
             <TextBlock
