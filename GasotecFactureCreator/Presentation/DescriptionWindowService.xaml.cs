@@ -15,6 +15,8 @@ public partial class DescriptionWindowService : Window
         InitializeComponent();
         AddRow();
         LoadSalesChecker();
+        TextBoxTotal.IsReadOnly = true;
+        TextBoxSaldo.IsReadOnly = true;
     }
 
     private void AddRow()
