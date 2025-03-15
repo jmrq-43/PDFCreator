@@ -57,7 +57,7 @@ public partial class DescriptionWindowService : Window
                     : 0,
             };
 
-            services.Add(servicio);
+            services.Add(service);
         }
 
         MessageBox.Show("Se ha creado un nuevo PDF");
