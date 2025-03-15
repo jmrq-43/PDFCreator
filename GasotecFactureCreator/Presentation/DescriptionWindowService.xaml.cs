@@ -60,6 +60,37 @@ public partial class DescriptionWindowService : Window
             services.Add(service);
         }
 
+        ServiceController.SetCurrentServices(services);
+
+        SalesChecker salesChecker = SalesCheckerController.GetCurrentSalesChecker();
+        List<ServiceDomain> currentServices = ServiceController.GetCurrentServices();
+
+        Dictionary<string, Tuple<float, float>> coordenadas = new Dictionary<string, Tuple<float, float>>
+        {
+            { "NOMBRE", new Tuple<float, float>(100, 750) },
+            { "LOCATION", new Tuple<float, float>(100, 730) },
+            { "PHONE", new Tuple<float, float>(100, 710) },
+            { "EMAIL", new Tuple<float, float>(100, 690) },
+            { "NIT", new Tuple<float, float>(100, 670) },
+            { "SERVICE", new Tuple<float, float>(300, 500) },
+            { "SERVICEDESCRIPTION", new Tuple<float, float>(300, 480) },
+            { "SERVICEPRICE", new Tuple<float, float>(300, 460) },
+        };
+
+        string carpetaSalida = "PDFs";
+
+        if (!Directory.Exists(carpetaSalida))
+        {
+            Directory.CreateDirectory(carpetaSalida);
+        }
+
+        string nombreArchivo = $"Factura_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+
+        string rutaCompleta = Path.Combine(carpetaSalida, nombreArchivo);
+
+        PdfCreatorWriter pdfWriter = new PdfCreatorWriter();
+        pdfWriter.OverwritePdf(rutaCompleta, salesChecker, currentServices, coordenadas);
+
         MessageBox.Show("Se ha creado un nuevo PDF");
     }
 
