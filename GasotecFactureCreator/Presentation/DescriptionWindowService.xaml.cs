@@ -44,7 +44,7 @@ public partial class DescriptionWindowService : Window
 
     private void SaveService(object sender, RoutedEventArgs e)
     {
-        List<Service> services = new List<Service>();
+        List<ServiceDomain> services = new List<ServiceDomain>();
 
         foreach (var rowService in _services)
         {
