@@ -48,7 +48,7 @@ public partial class DescriptionWindowService : Window
 
         foreach (var rowService in _services)
         {
-            Service servicio = new Service
+            ServiceDomain service = new ServiceDomain
             {
                 serviceType = rowService.MenuServicio.Items[0].ToString(),
                 serviceDescription = rowService.TextBoxDescription.Text,
