@@ -1,6 +1,6 @@
 ﻿namespace GasotecFactureCreator.Domain;
 
-public class Service
+public class ServiceDomain
 {
     public string serviceType { get; set; }
     public string serviceDescription { get; set; }
