@@ -126,13 +126,15 @@ public partial class DescriptionWindowService : Window
                 total += servicePrice;
             }
         }
+
         TextBoxTotal.Text = total.ToString();
         UpdateBalance();
     }
 
     private void UpdateBalance()
     {
-        if (decimal.TryParse(TextBoxTotal.Text, out decimal total) && decimal.TryParse(TextBoxAbono.Text, out decimal abono))
+        if (decimal.TryParse(TextBoxTotal.Text, out decimal total) &&
+            decimal.TryParse(TextBoxAbono.Text, out decimal abono))
         {
             TextBoxSaldo.Text = (total - abono).ToString();
         }
