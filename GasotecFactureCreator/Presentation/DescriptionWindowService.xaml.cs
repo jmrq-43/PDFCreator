@@ -53,7 +53,7 @@ public partial class DescriptionWindowService : Window
         {
             serviceType = rowService.MenuServicio.Items[0] is MenuItem menuItem && menuItem.Items.Count > 0 ? menuItem.Header.ToString() : null,
             serviceDescription = rowService.TextBoxDescription.Text,
-            servicePrice = decimal.TryParse(rowService.TextBoxServicePrice.Text, out decimal servicePrice)
+            servicePrice = decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice)
                 ? servicePrice
                 : 0,
         };
