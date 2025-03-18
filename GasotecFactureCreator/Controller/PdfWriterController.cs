@@ -1,4 +1,5 @@
 ﻿using GasotecFactureCreator.Domain;
+using System.Collections.Generic;
 
 namespace GasotecFactureCreator.Controller;
 
@@ -11,7 +12,8 @@ public class PdfWriterController
         _pdfWriter = new PdfCreatorWriter();
     }
 
-    public void GenerarPdf( string pdfSalida, SalesChecker salesChecker, List<Domain.ServiceDomain> servicios, Dictionary<string, Tuple<float, float>> coordenadas)
+    public void GenerarPdf(string pdfSalida, SalesChecker salesChecker,
+        List<ServiceDomain> servicios, Dictionary<string, Tuple<float, float>> coordenadas)
     {
         _pdfWriter.OverwritePdf(pdfSalida, salesChecker, servicios, coordenadas);
     }
