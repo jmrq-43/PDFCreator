@@ -4,15 +4,21 @@ namespace GasotecFactureCreator.Controller;
 
 public static class SalesCheckerController
 {
-    public static SalesChecker CurrentSalesChecker { get; private set; }
+    private static SalesChecker _CurrentSalesChecker;
 
-    public static void CreateSalesChecker(string name, string address, long phoneNumber, string email, string Nit)
+    public static void CreateSalesChecker(string name, string address, long phoneNumber, string email,
+        string Nit, decimal total, decimal payment, decimal balance)
     {
-        CurrentSalesChecker = new SalesChecker(name, address, phoneNumber, email, Nit);
+        _CurrentSalesChecker = new SalesChecker(name, address, phoneNumber, email, Nit)
+        {
+            Total = total,
+            Payment = payment,
+            Balance = balance
+        };
     }
 
     public static SalesChecker GetCurrentSalesChecker()
     {
-        return CurrentSalesChecker;
+        return _CurrentSalesChecker;
     }
 }
