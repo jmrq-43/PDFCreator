@@ -35,20 +35,29 @@ public class PdfCreatorWriter
                         contentByte.BeginText();
                         contentByte.SetFontAndSize(BaseFont.CreateFont(BaseFont.HELVETICA,
                             BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 12);
+
                         InsertData(contentByte, salesChecker.Name, coordenate["NOMBRE"]);
                         InsertData(contentByte, salesChecker.Address, coordenate["LOCATION"]);
                         InsertData(contentByte, salesChecker.Email, coordenate["EMAIL"]);
                         InsertData(contentByte, salesChecker.PhoneNumber.ToString(), coordenate["PHONE"]);
                         InsertData(contentByte, salesChecker.Nit, coordenate["NIT"]);
+                        InsertData(contentByte, salesChecker.Balance.ToString(), coordenate["BALANCE"]);
+                        InsertData(contentByte, salesChecker.Payment.ToString(), coordenate["PAYMENT"]);
+                        InsertData(contentByte, salesChecker.Total.ToString(), coordenate["TOTAL"]);
 
                         if (service != null && service.Count > 0)
                         {
-                            InsertData(contentByte, service[0].serviceType, coordenate["SERVICE"]);
-                            InsertData(contentByte, service[0].serviceDescription,
-                                coordenate["SERVICEDESCRIPTION"]);
-                            InsertData(contentByte, service[0].servicePrice.ToString(), coordenate["SERVICEPRICE"]);
-                        }
+                            for (int i = 0; i < service.Count; i++)
+                            {
+                                float serviceY = coordenate["SERVICE"].Item2 - (i * 15);
+                                float serviceDescriptionY = coordenate["SERVICEDESCRIPTION"].Item2 - (i * 15);
+                                float servicePriceY = coordenate["SERVICEPRICE"].Item2 - (i * 15);
 
+                                InsertData(contentByte, service[i].serviceType, new Tuple<float, float>(coordenate["SERVICE"].Item1, serviceY));
+                                InsertData(contentByte, service[i].serviceDescription, new Tuple<float, float>(coordenate["SERVICEDESCRIPTION"].Item1, serviceDescriptionY));
+                                InsertData(contentByte, service[i].servicePrice.ToString(), new Tuple<float, float>(coordenate["SERVICEPRICE"].Item1, servicePriceY));
+                            }
+                        }
                         contentByte.EndText();
                     }
                 }
