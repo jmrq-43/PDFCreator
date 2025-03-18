@@ -25,7 +25,7 @@ public partial class ClientDataCollectorWIndow : Window
         string mail = TextBoxMail.Text;
         string nit = TextBoxNit.Text;
 
-        SalesCheckerController.CreateSalesChecker(name, address, phone, mail, nit);
+        SalesCheckerController.CreateSalesChecker(name, address, phone, mail, nit, 0,0 ,0);
 
         DescriptionWindowService service = new DescriptionWindowService();
         this.Close();
