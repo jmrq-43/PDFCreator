@@ -311,6 +311,8 @@ node_modules/
 *.dsw
 *.dsp
 
+GasotecFactureCreator/resources
+
 # Visual Studio LightSwitch build output
 **/*.HTMLClient/GeneratedArtifacts
 **/*.DesktopClient/GeneratedArtifacts

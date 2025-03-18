@@ -26,4 +26,17 @@
       </Page>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="iTextSharp" Version="5.5.13.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="resources\pdftemplategasotec.pdf" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="resources\templategasotec.pdf" />
+      <Resource Include="resources\templategasotec.pdf" />
+    </ItemGroup>
+
 </Project>

@@ -7,6 +7,9 @@ public class SalesChecker
     public long PhoneNumber{get;set;}
     public String Email{get;set;}
     public string Nit{get;set;}
+    public decimal Total {get;set;}
+    public decimal Payment {get;set;}
+    public decimal Balance {get;set;}
 
     public SalesChecker(string name, string address, long phoneNumber, string email, string nit)
     {

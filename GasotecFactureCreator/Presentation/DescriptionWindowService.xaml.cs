@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using GasotecFactureCreator.Controller;
 using GasotecFactureCreator.Controller.Service;
@@ -43,25 +44,62 @@ public partial class DescriptionWindowService : Window
     }
 
     private void SaveService(object sender, RoutedEventArgs e)
+{
+    List<ServiceDomain> services = new List<ServiceDomain>();
+
+    foreach (var rowService in _services)
     {
-        List<Service> services = new List<Service>();
-
-        foreach (var rowService in _services)
+        ServiceDomain service = new ServiceDomain
         {
-            Service servicio = new Service
-            {
-                serviceType = rowService.MenuServicio.Items[0].ToString(),
-                serviceDescription = rowService.TextBoxDescription.Text,
-                servicePrice = decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice)
-                    ? servicePrice
-                    : 0,
-            };
+            serviceType = rowService.MenuServicio.Items[0] is MenuItem menuItem && menuItem.Items.Count > 0 ? menuItem.Header.ToString() : null,
+            serviceDescription = rowService.TextBoxDescription.Text,
+            servicePrice = decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice)
+                ? servicePrice
+                : 0,
+        };
 
-            services.Add(servicio);
-        }
-
-        MessageBox.Show("Se ha creado un nuevo PDF");
+        services.Add(service);
     }
+
+    ServiceController.SetCurrentServices(services);
+
+    SalesChecker salesChecker = SalesCheckerController.GetCurrentSalesChecker();
+
+    salesChecker.Total = decimal.TryParse(TextBoxTotal.Text, out decimal t) ? t : 0;
+    salesChecker.Payment = decimal.TryParse(TextBoxAbono.Text, out decimal a) ? a : 0;
+    salesChecker.Balance = decimal.TryParse(TextBoxSaldo.Text, out decimal s) ? s : 0;
+
+    Dictionary<string, Tuple<float, float>> coordenadas = new Dictionary<string, Tuple<float, float>>
+    {
+        { "NOMBRE", new Tuple<float, float>(80, 498) },
+        { "LOCATION", new Tuple<float, float>(80, 469) },
+        { "PHONE", new Tuple<float, float>(80, 455) },
+        { "EMAIL", new Tuple<float, float>(65, 440) },
+        { "NIT", new Tuple<float, float>(82, 483) },
+        { "SERVICE", new Tuple<float, float>(10, 289) },
+        { "SERVICEDESCRIPTION", new Tuple<float, float>(100, 289) },
+        { "SERVICEPRICE", new Tuple<float, float>(300, 289) },
+        { "TOTAL", new Tuple<float, float>(290, 90) },
+        { "PAYMENT", new Tuple<float, float>(50, 110) },
+        { "BALANCE", new Tuple<float, float>(150, 110) }
+    };
+
+    string carpetaSalida = "PDFs";
+
+    if (!Directory.Exists(carpetaSalida))
+    {
+        Directory.CreateDirectory(carpetaSalida);
+    }
+
+    string nombreArchivo = $"Factura_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+
+    string rutaCompleta = Path.Combine(carpetaSalida, nombreArchivo);
+
+    PdfCreatorWriter pdfWriter = new PdfCreatorWriter();
+    pdfWriter.OverwritePdf(rutaCompleta, salesChecker, services, coordenadas);
+
+    MessageBox.Show("Se ha creado un nuevo PDF");
+}
 
     private void AddRow_Click(object sender, RoutedEventArgs e)
     {
@@ -94,13 +132,15 @@ public partial class DescriptionWindowService : Window
                 total += servicePrice;
             }
         }
+
         TextBoxTotal.Text = total.ToString();
         UpdateBalance();
     }
 
     private void UpdateBalance()
     {
-        if (decimal.TryParse(TextBoxTotal.Text, out decimal total) && decimal.TryParse(TextBoxAbono.Text, out decimal abono))
+        if (decimal.TryParse(TextBoxTotal.Text, out decimal total) &&
+            decimal.TryParse(TextBoxAbono.Text, out decimal abono))
         {
             TextBoxSaldo.Text = (total - abono).ToString();
         }
