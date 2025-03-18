@@ -32,7 +32,11 @@
 
     <ItemGroup>
       <None Remove="resources\pdftemplategasotec.pdf" />
-      <Resource Include="resources\pdftemplategasotec.pdf" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="resources\templategasotec.pdf" />
+      <Resource Include="resources\templategasotec.pdf" />
     </ItemGroup>
 
 </Project>
