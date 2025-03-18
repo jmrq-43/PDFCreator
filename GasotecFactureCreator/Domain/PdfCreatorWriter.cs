@@ -12,7 +12,7 @@ public class PdfCreatorWriter
     {
         try
         {
-            string resourcePath = "resources/pdftemplategasotec.pdf";
+            string resourcePath = "resources/templategasotec.pdf".ToLower();
             Uri resourceUri = new Uri(resourcePath, UriKind.Relative);
 
             Stream templateStream = Application.GetResourceStream(resourceUri)?.Stream;
