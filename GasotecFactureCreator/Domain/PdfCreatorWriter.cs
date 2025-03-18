@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Windows;
 using iTextSharp.text.pdf;
@@ -55,7 +56,7 @@ public class PdfCreatorWriter
 
                                 InsertData(contentByte, service[i].serviceType, new Tuple<float, float>(coordenate["SERVICE"].Item1, serviceY));
                                 InsertData(contentByte, service[i].serviceDescription, new Tuple<float, float>(coordenate["SERVICEDESCRIPTION"].Item1, serviceDescriptionY));
-                                InsertData(contentByte, service[i].servicePrice.ToString(), new Tuple<float, float>(coordenate["SERVICEPRICE"].Item1, servicePriceY));
+                                InsertData(contentByte, service[i].servicePrice.ToString(CultureInfo.CurrentCulture), new Tuple<float, float>(coordenate["SERVICEPRICE"].Item1, servicePriceY));
                             }
                         }
                         contentByte.EndText();
