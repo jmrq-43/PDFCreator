@@ -50,10 +50,12 @@ public class PdfCreatorWriter
                         {
                             for (int i = 0; i < service.Count; i++)
                             {
+                                float serviceAmount = coordenate["SERVICEAMOUNT"].Item2 - (i * 15);
                                 float serviceY = coordenate["SERVICE"].Item2 - (i * 15);
                                 float serviceDescriptionY = coordenate["SERVICEDESCRIPTION"].Item2 - (i * 15);
                                 float servicePriceY = coordenate["SERVICEPRICE"].Item2 - (i * 15);
 
+                                InsertData(contentByte, service[i].serviceAmount.ToString(CultureInfo.CurrentCulture), new Tuple<float, float>(coordenate["SERVICEAMOUNT"].Item1, serviceAmount));
                                 InsertData(contentByte, service[i].serviceType, new Tuple<float, float>(coordenate["SERVICE"].Item1, serviceY));
                                 InsertData(contentByte, service[i].serviceDescription, new Tuple<float, float>(coordenate["SERVICEDESCRIPTION"].Item1, serviceDescriptionY));
                                 InsertData(contentByte, service[i].servicePrice.ToString(CultureInfo.CurrentCulture), new Tuple<float, float>(coordenate["SERVICEPRICE"].Item1, servicePriceY));
