@@ -29,11 +29,14 @@ public partial class DescriptionWindowService : Window
         gridRow.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
         gridRow.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
         gridRow.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        gridRow.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-        Grid.SetColumn(servicioRows.MenuServicio, 0);
-        Grid.SetColumn(servicioRows.TextBoxDescription, 1);
-        Grid.SetColumn(servicioRows.TextBoxValue, 2);
+        Grid.SetColumn(servicioRows.TextBoxAmount, 0);
+        Grid.SetColumn(servicioRows.MenuServicio, 1);
+        Grid.SetColumn(servicioRows.TextBoxDescription, 2);
+        Grid.SetColumn(servicioRows.TextBoxValue, 3);
 
+        gridRow.Children.Add(servicioRows.TextBoxAmount);
         gridRow.Children.Add(servicioRows.MenuServicio);
         gridRow.Children.Add(servicioRows.TextBoxDescription);
         gridRow.Children.Add(servicioRows.TextBoxValue);
