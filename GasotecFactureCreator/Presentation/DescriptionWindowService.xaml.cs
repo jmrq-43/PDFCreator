@@ -59,6 +59,9 @@ public partial class DescriptionWindowService : Window
             servicePrice = decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice)
                 ? servicePrice
                 : 0,
+            serviceAmount = int.TryParse(rowService.TextBoxAmount.Text, out int serviceAmount)
+                ? serviceAmount
+                : 0,
         };
 
         services.Add(service);
@@ -79,6 +82,7 @@ public partial class DescriptionWindowService : Window
         { "PHONE", new Tuple<float, float>(80, 455) },
         { "EMAIL", new Tuple<float, float>(65, 440) },
         { "NIT", new Tuple<float, float>(82, 483) },
+        { "SERVICEAMOUNT", new Tuple<float, float>(2,289)},
         { "SERVICE", new Tuple<float, float>(10, 289) },
         { "SERVICEDESCRIPTION", new Tuple<float, float>(100, 289) },
         { "SERVICEPRICE", new Tuple<float, float>(300, 289) },
