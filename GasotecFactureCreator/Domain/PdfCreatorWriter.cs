@@ -35,7 +35,7 @@ public class PdfCreatorWriter
 
                         contentByte.BeginText();
                         contentByte.SetFontAndSize(BaseFont.CreateFont(BaseFont.HELVETICA,
-                            BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 20);
+                            BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 17);
 
                         InsertData(contentByte, salesChecker.Name, coordenate["NOMBRE"]);
                         InsertData(contentByte, salesChecker.Address, coordenate["LOCATION"]);
