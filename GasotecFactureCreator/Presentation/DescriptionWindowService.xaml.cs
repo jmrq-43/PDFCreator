@@ -86,10 +86,10 @@ public partial class DescriptionWindowService : Window
             { "EMAIL", new Tuple<float, float>(124.62f, 743.95f) },
             { "SERVICEAMOUNT", new Tuple<float, float>(40.40f, 493.87f) },
             { "SERVICE", new Tuple<float, float>(93.12f, 493.87f) },
-            { "SERVICEDESCRIPTION", new Tuple<float, float>(190.83f, 493.87f) },
-            { "SERVICEPRICE", new Tuple<float, float>(518.81f, 493.87f) },
-            { "PAYMENT", new Tuple<float, float>(75.69f, 192.85f) },
-            { "BALANCE", new Tuple<float, float>(259.60f, 192.85f) },
+            { "SERVICEDESCRIPTION", new Tuple<float, float>(210.83f, 493.87f) },
+            { "SERVICEPRICE", new Tuple<float, float>(498.60f, 493.87f) },
+            { "PAYMENT", new Tuple<float, float>(75.69f, 188.97f) },
+            { "BALANCE", new Tuple<float, float>(259.60f, 188.97f) },
             { "TOTAL", new Tuple<float, float>(463.82f, 154.64f) }
         };
 
