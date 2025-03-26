@@ -47,66 +47,68 @@ public partial class DescriptionWindowService : Window
     }
 
     private void SaveService(object sender, RoutedEventArgs e)
-{
-    List<ServiceDomain> services = new List<ServiceDomain>();
-
-    foreach (var rowService in _services)
     {
-        ServiceDomain service = new ServiceDomain
+        List<ServiceDomain> services = new List<ServiceDomain>();
+
+        foreach (var rowService in _services)
         {
-            serviceType = rowService.MenuServicio.Items[0] is MenuItem menuItem && menuItem.Items.Count > 0 ? menuItem.Header.ToString() : null,
-            serviceDescription = rowService.TextBoxDescription.Text,
-            servicePrice = decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice)
-                ? servicePrice
-                : 0,
-            serviceAmount = int.TryParse(rowService.TextBoxAmount.Text, out int serviceAmount)
-                ? serviceAmount
-                : 0,
+            ServiceDomain service = new ServiceDomain
+            {
+                serviceType = rowService.MenuServicio.Items[0] is MenuItem menuItem && menuItem.Items.Count > 0
+                    ? menuItem.Header.ToString()
+                    : null,
+                serviceDescription = rowService.TextBoxDescription.Text,
+                servicePrice = decimal.TryParse(rowService.TextBoxValue.Text, out decimal servicePrice)
+                    ? servicePrice
+                    : 0,
+                serviceAmount = int.TryParse(rowService.TextBoxAmount.Text, out int serviceAmount)
+                    ? serviceAmount
+                    : 0,
+            };
+
+            services.Add(service);
+        }
+
+        ServiceController.SetCurrentServices(services);
+
+        SalesChecker salesChecker = SalesCheckerController.GetCurrentSalesChecker();
+
+        salesChecker.Total = decimal.TryParse(TextBoxTotal.Text, out decimal t) ? t : 0;
+        salesChecker.Payment = decimal.TryParse(TextBoxAbono.Text, out decimal a) ? a : 0;
+        salesChecker.Balance = decimal.TryParse(TextBoxSaldo.Text, out decimal s) ? s : 0;
+
+        Dictionary<string, Tuple<float, float>> coordenadas = new Dictionary<string, Tuple<float, float>>
+        {
+            { "NOMBRE", new Tuple<float, float>(144, 845) },
+            { "NIT", new Tuple<float, float>(160.92f, 818.54f) },
+            { "LOCATION", new Tuple<float, float>(149.69f, 791.72f) },
+            { "PHONE", new Tuple<float, float>(134.90f, 768.34f) },
+            { "EMAIL", new Tuple<float, float>(124.62f, 743.95f) },
+            { "SERVICEAMOUNT", new Tuple<float, float>(40.40f, 493.87f) },
+            { "SERVICE", new Tuple<float, float>(93.12f, 493.87f) },
+            { "SERVICEDESCRIPTION", new Tuple<float, float>(190.83f, 493.87f) },
+            { "SERVICEPRICE", new Tuple<float, float>(518.81f, 493.87f) },
+            { "PAYMENT", new Tuple<float, float>(75.69f, 192.85f) },
+            { "BALANCE", new Tuple<float, float>(259.60f, 192.85f) },
+            { "TOTAL", new Tuple<float, float>(463.82f, 154.64f) }
         };
 
-        services.Add(service);
+        string carpetaSalida = "PDFs";
+
+        if (!Directory.Exists(carpetaSalida))
+        {
+            Directory.CreateDirectory(carpetaSalida);
+        }
+
+        string nombreArchivo = $"Factura_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+
+        string rutaCompleta = Path.Combine(carpetaSalida, nombreArchivo);
+
+        PdfCreatorWriter pdfWriter = new PdfCreatorWriter();
+        pdfWriter.OverwritePdf(rutaCompleta, salesChecker, services, coordenadas);
+
+        MessageBox.Show("Se ha creado un nuevo PDF");
     }
-
-    ServiceController.SetCurrentServices(services);
-
-    SalesChecker salesChecker = SalesCheckerController.GetCurrentSalesChecker();
-
-    salesChecker.Total = decimal.TryParse(TextBoxTotal.Text, out decimal t) ? t : 0;
-    salesChecker.Payment = decimal.TryParse(TextBoxAbono.Text, out decimal a) ? a : 0;
-    salesChecker.Balance = decimal.TryParse(TextBoxSaldo.Text, out decimal s) ? s : 0;
-
-    Dictionary<string, Tuple<float, float>> coordenadas = new Dictionary<string, Tuple<float, float>>
-    {
-        { "NOMBRE", new Tuple<float, float>(80, 498) },
-        { "LOCATION", new Tuple<float, float>(80, 469) },
-        { "PHONE", new Tuple<float, float>(80, 455) },
-        { "EMAIL", new Tuple<float, float>(65, 440) },
-        { "NIT", new Tuple<float, float>(82, 483) },
-        { "SERVICEAMOUNT", new Tuple<float, float>(2,289)},
-        { "SERVICE", new Tuple<float, float>(10, 289) },
-        { "SERVICEDESCRIPTION", new Tuple<float, float>(100, 289) },
-        { "SERVICEPRICE", new Tuple<float, float>(300, 289) },
-        { "TOTAL", new Tuple<float, float>(290, 90) },
-        { "PAYMENT", new Tuple<float, float>(50, 110) },
-        { "BALANCE", new Tuple<float, float>(150, 110) }
-    };
-
-    string carpetaSalida = "PDFs";
-
-    if (!Directory.Exists(carpetaSalida))
-    {
-        Directory.CreateDirectory(carpetaSalida);
-    }
-
-    string nombreArchivo = $"Factura_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
-
-    string rutaCompleta = Path.Combine(carpetaSalida, nombreArchivo);
-
-    PdfCreatorWriter pdfWriter = new PdfCreatorWriter();
-    pdfWriter.OverwritePdf(rutaCompleta, salesChecker, services, coordenadas);
-
-    MessageBox.Show("Se ha creado un nuevo PDF");
-}
 
     private void AddRow_Click(object sender, RoutedEventArgs e)
     {
