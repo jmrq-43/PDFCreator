@@ -9,6 +9,7 @@ public class RowService
     public TextBox TextBoxDescription { get; set; }
     public TextBox TextBoxValue { get; set; }
     public MenuItem MenuItemServicio { get; set; }
+    public TextBox TextBoxAmount { get; set; }
 
     public RowService()
     {
@@ -18,6 +19,7 @@ public class RowService
 
         TextBoxDescription = new TextBox { Style = (Style)Application.Current.Resources["RoundedTextBoxStyle"] };
         TextBoxValue = new TextBox { Style = (Style)Application.Current.Resources["RoundedTextBoxStyle"] };
+        TextBoxAmount = new TextBox { Style = (Style)Application.Current.Resources["RoundedTextBoxStyle"] };
 
         MenuItem mantenimiento = new MenuItem { Header = "Mantenimiento" };
         mantenimiento.Click += (s, args) => MenuItemSubmenu_Click(s, args, MenuItemServicio);
