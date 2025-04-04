@@ -125,6 +125,21 @@ public partial class DescriptionWindowService : Window
         }
     }
 
+    private void Back_Button_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            ClientDataCollectorWIndow clientDataCollectorWIndow = new ClientDataCollectorWIndow();
+            this.Close();
+            clientDataCollectorWIndow.Show();
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show(exception.Message);
+        }
+
+    }
+
     private void LoadSalesChecker()
     {
         SalesChecker salesChecker = SalesCheckerController.GetCurrentSalesChecker();
