@@ -159,6 +159,7 @@
                 Height="50"
                 Width="140"
                 Content="volver"
+                Click="Back_Button_Click"
                 Style="{StaticResource RoundedButtonStyle}" />
 
             <Button
