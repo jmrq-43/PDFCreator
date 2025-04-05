@@ -99,7 +99,7 @@
                         Margin="0,40,0,0">
                         <TextBlock
                             FontSize="28"
-                            Text="NIT" />
+                            Text="NIT / Cedula" />
                         <TextBox
                             x:Name="TextBoxNit"
                             Height="30"
