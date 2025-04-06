@@ -26,6 +26,18 @@ public partial class ClientDataCollectorWIndow : Window
 
     private void Sig_Button_Click(Object sender, RoutedEventArgs e)
     {
+        if (DataContext is SalesChecker currentChecker)
+        {
+            SalesCheckerController.CreateSalesChecker(
+                currentChecker.Name,
+                currentChecker.Address,
+                currentChecker.PhoneNumber,
+                currentChecker.Email,
+                currentChecker.Nit,
+                currentChecker.Total,
+                currentChecker.Payment,
+                currentChecker.Balance);
+        }
         string name = TextBoxName.Text;
         string address = TextBoxAddres.Text;
         long phone = long.Parse(TextBoxPhone.Text);
