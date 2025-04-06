@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using GasotecFactureCreator.Controller;
+using GasotecFactureCreator.Domain;
 
 namespace GasotecFactureCreator.Presentation;
 
@@ -8,6 +9,12 @@ public partial class ClientDataCollectorWIndow : Window
     public ClientDataCollectorWIndow()
     {
         InitializeComponent();
+        DataContext = SalesCheckerController.GetCurrentSalesChecker();
+    }
+
+    private void ClientDataCollectorWIndow_Loaded(object sender, RoutedEventArgs e)
+    {
+        DataContext = SalesCheckerController.GetCurrentSalesChecker();
     }
 
     private void Back_Button_Click(Object sender, RoutedEventArgs e)
