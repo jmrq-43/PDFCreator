@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -37,6 +38,17 @@
                 Style="{StaticResource RoundedButtonStyle}"
                 Click="Button_Go_Data_Collector"
                 Content="Empezar"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Button
+                Content="Seleccionar ruta"
+                Width="370"
+                Height="50"
+                VerticalAlignment="Bottom"
+                Margin="50"
+                Style="{StaticResource RoundedButtonStyle}"
+                Click="Select_Paht_Button"
+                    ></Button>
         </Grid>
     </Grid>
 </Window>
