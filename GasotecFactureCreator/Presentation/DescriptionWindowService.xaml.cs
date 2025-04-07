@@ -95,23 +95,27 @@ public partial class DescriptionWindowService : Window
 
         Dictionary<string, Tuple<float, float>> coordenadas = new Dictionary<string, Tuple<float, float>>
         {
-            { "NOMBRE", new Tuple<float, float>(144, 845) },
+            { "NAME1", new Tuple<float, float>(144, 845) },
             { "NIT", new Tuple<float, float>(160.92f, 818.54f) },
             { "LOCATION", new Tuple<float, float>(149.69f, 791.72f) },
             { "PHONE", new Tuple<float, float>(134.90f, 768.34f) },
-            { "EMAIL", new Tuple<float, float>(124.62f, 743.95f) },
+            { "EMAIL", new Tuple<float, float>(124.67f, 746f) },
             { "SERVICEAMOUNT", new Tuple<float, float>(40.40f, 493.87f) },
             { "SERVICE", new Tuple<float, float>(93.12f, 493.87f) },
             { "SERVICEDESCRIPTION", new Tuple<float, float>(210.83f, 493.87f) },
             { "SERVICEPRICE", new Tuple<float, float>(498.60f, 493.87f) },
             { "PAYMENT", new Tuple<float, float>(75.69f, 188.97f) },
             { "BALANCE", new Tuple<float, float>(259.60f, 188.97f) },
-            { "TOTAL", new Tuple<float, float>(463.82f, 154.64f) }
+            { "TOTAL1", new Tuple<float, float>(463.82f, 154.64f) },
+            { "TOTAL2", new Tuple<float, float>(130.82f, 589.64f) },
+            { "DATE", new Tuple<float, float>(185f, 870f) },
+            { "NAME2", new Tuple<float, float>(390.3f, 69.13f) }
         };
 
         if (string.IsNullOrEmpty(_pdfSavePath))
         {
-            MessageBox.Show("No se ha seleccionado una ruta de guardado.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("No se ha seleccionado una ruta de guardado.", "Advertencia", MessageBoxButton.OK,
+                MessageBoxImage.Warning);
             return;
         }
 
