@@ -1,19 +1,35 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using GasotecFactureCreator.Controller;
 using GasotecFactureCreator.Controller.Service;
 using GasotecFactureCreator.Domain;
+using iTextSharp.text.pdf;
 
 namespace GasotecFactureCreator.Presentation;
 
 public partial class DescriptionWindowService : Window
 {
     private List<RowService> _services = new List<RowService>();
+    private string _pdfSavePath;
+
+    public DescriptionWindowService(string pdfSavePath)
+    {
+        InitializeComponent();
+        _pdfSavePath = pdfSavePath;
+        AddRow();
+        LoadSalesChecker();
+        TextBoxTotal.IsReadOnly = true;
+        TextBoxSaldo.IsReadOnly = true;
+    }
 
     public DescriptionWindowService()
     {
         InitializeComponent();
+        _pdfSavePath = string.Empty;
         AddRow();
         LoadSalesChecker();
         TextBoxTotal.IsReadOnly = true;
@@ -93,21 +109,18 @@ public partial class DescriptionWindowService : Window
             { "TOTAL", new Tuple<float, float>(463.82f, 154.64f) }
         };
 
-        string carpetaSalida = "PDFs";
-
-        if (!Directory.Exists(carpetaSalida))
+        if (string.IsNullOrEmpty(_pdfSavePath))
         {
-            Directory.CreateDirectory(carpetaSalida);
+            MessageBox.Show("No se ha seleccionado una ruta de guardado.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
         }
 
         string nombreArchivo = $"Factura_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
-
-        string rutaCompleta = Path.Combine(carpetaSalida, nombreArchivo);
+        string rutaCompleta = Path.Combine(_pdfSavePath, nombreArchivo);
 
         PdfCreatorWriter pdfWriter = new PdfCreatorWriter();
-        pdfWriter.OverwritePdf(rutaCompleta, salesChecker, services, coordenadas);
-
-        MessageBox.Show("Se ha creado un nuevo PDF");
+        pdfWriter.OverwritePdf(_pdfSavePath, rutaCompleta, salesChecker, services, coordenadas);
+        MessageBox.Show($"Se ha creado un nuevo PDF en: {rutaCompleta}");
     }
 
     private void AddRow_Click(object sender, RoutedEventArgs e)
@@ -129,7 +142,8 @@ public partial class DescriptionWindowService : Window
     {
         try
         {
-            ClientDataCollectorWIndow clientDataCollectorWIndow = new ClientDataCollectorWIndow();
+            ClientDataCollectorWIndow clientDataCollectorWIndow
+                = new ClientDataCollectorWIndow(_pdfSavePath);
             this.Close();
             clientDataCollectorWIndow.Show();
         }
@@ -137,7 +151,6 @@ public partial class DescriptionWindowService : Window
         {
             MessageBox.Show(exception.Message);
         }
-
     }
 
     private void LoadSalesChecker()

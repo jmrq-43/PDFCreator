@@ -8,7 +8,8 @@ namespace GasotecFactureCreator.Domain;
 
 public class PdfCreatorWriter
 {
-    public void OverwritePdf(string outputFile, SalesChecker salesChecker, List<ServiceDomain> service,
+    public void OverwritePdf(string pdfSavePath, string outputFile, SalesChecker salesChecker,
+        List<ServiceDomain> service,
         Dictionary<string, Tuple<float, float>> coordenate)
     {
         try
