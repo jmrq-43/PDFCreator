@@ -8,6 +8,8 @@ namespace GasotecFactureCreator.Domain;
 
 public class PdfCreatorWriter
 {
+    private DateTime _dateTime = DateTime.Today;
+
     public void OverwritePdf(string pdfSavePath, string outputFile, SalesChecker salesChecker,
         List<ServiceDomain> service,
         Dictionary<string, Tuple<float, float>> coordenate)
@@ -38,14 +40,17 @@ public class PdfCreatorWriter
                         contentByte.SetFontAndSize(BaseFont.CreateFont(BaseFont.HELVETICA,
                             BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 17);
 
-                        InsertData(contentByte, salesChecker.Name, coordenate["NOMBRE"]);
+                        InsertData(contentByte, salesChecker.Name, coordenate["NAME1"]);
+                        InsertData(contentByte, salesChecker.Name, coordenate["NAME2"]);
                         InsertData(contentByte, salesChecker.Address, coordenate["LOCATION"]);
                         InsertData(contentByte, salesChecker.Email, coordenate["EMAIL"]);
                         InsertData(contentByte, salesChecker.PhoneNumber.ToString(), coordenate["PHONE"]);
                         InsertData(contentByte, salesChecker.Nit, coordenate["NIT"]);
                         InsertData(contentByte, salesChecker.Balance.ToString(), coordenate["BALANCE"]);
                         InsertData(contentByte, salesChecker.Payment.ToString(), coordenate["PAYMENT"]);
-                        InsertData(contentByte, salesChecker.Total.ToString(), coordenate["TOTAL"]);
+                        InsertData(contentByte, salesChecker.Total.ToString(), coordenate["TOTAL1"]);
+                        InsertData(contentByte, salesChecker.Total.ToString(), coordenate["TOTAL2"]);
+                        InsertData(contentByte, _dateTime.ToString("d"), coordenate["DATE"]);
 
                         if (service != null && service.Count > 0)
                         {
