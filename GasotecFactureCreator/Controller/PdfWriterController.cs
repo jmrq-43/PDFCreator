@@ -12,9 +12,9 @@ public class PdfWriterController
         _pdfWriter = new PdfCreatorWriter();
     }
 
-    public void GenerarPdf(string pdfSalida, SalesChecker salesChecker,
+    public void GeneratePdf(string pdfSalidaDirectorio, string pdfNombreArchivo, SalesChecker salesChecker,
         List<ServiceDomain> servicios, Dictionary<string, Tuple<float, float>> coordenadas)
     {
-        _pdfWriter.OverwritePdf(pdfSalida, salesChecker, servicios, coordenadas);
+        _pdfWriter.OverwritePdf(pdfSalidaDirectorio, pdfNombreArchivo, salesChecker, servicios, coordenadas);
     }
 }
