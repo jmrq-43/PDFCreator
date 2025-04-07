@@ -6,6 +6,9 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
+        <AssemblyName>GasotecFactureCreator</AssemblyName>
+        <RootNamespace>GasotecFactureCreator</RootNamespace>
+        <ApplicationIcon>resources/logo.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,6 +31,7 @@
 
     <ItemGroup>
       <PackageReference Include="iTextSharp" Version="5.5.13.4" />
+      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
     </ItemGroup>
 
     <ItemGroup>
@@ -37,6 +41,8 @@
     <ItemGroup>
       <None Remove="resources\templategasotec.pdf" />
       <Resource Include="resources\templategasotec.pdf" />
+      <None Remove="resources\logo.ico" />
+      <Resource Include="resources\logo.ico" />
     </ItemGroup>
 
 </Project>
