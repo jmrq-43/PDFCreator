@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GasotecFactureCreator"
         mc:Ignorable="d"
-        Title="Pagina principal" Height="650" Width="1100">
+        Title="Pagina principal" Height="650" Width="1100"
+        Icon="{StaticResource AppIcon}">
 
     <Grid Background="#D9D9D9">
         <Grid.RowDefinitions>
