@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:GasotecFactureCreator"
              StartupUri="/Presentation/MainWindow.xaml">
     <Application.Resources>
+        <ImageSource x:Key="AppIcon">resources/logo.ico</ImageSource>
         <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
             <Setter Property="Background" Value="#C0BEBE"/>
             <Setter Property="Template">
